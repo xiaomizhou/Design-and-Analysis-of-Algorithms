@@ -1,15 +1,15 @@
+#!/usr/bin/python
+# -*- encoding: utf-8 -*-
 def find_largest_subarray(s):
 	num = len(s)
 	if num == 1:
-		return [s,s[0],s,s]
+		return [s,s[0]]
 	else:
 		s1 = s[0:num/2]
 		s2 = s[num/2:]
-		[subS1,sum1,preS1,sufS1] = find_largest_subarray(s1)
-		[subS2,sum2,preS2,sufS2] = find_largest_subarray(s2)
-		spanS = sufS1 + preS2
-		sum3 = sum(spanS)
-		# [spanS,sum3] = find_span_largest_subarray(s1,s2)
+		[subS1,sum1] = find_largest_subarray(s1)
+		[subS2,sum2] = find_largest_subarray(s2)
+		[spanS,sum3] = find_span_largest_subarray(s1,s2)
 		if sum1 > sum2 and sum1 > sum3:
 			return [subS1,sum1]
 		elif sum2 > sum1 and sum2 > sum3:
